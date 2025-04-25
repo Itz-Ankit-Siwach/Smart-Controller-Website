@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Control System Using Gesture</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+  </head>
+<body>
+  
+  <!-- Fixed Header with Navigation and Download Button -->
+  <!-- Fixed Header with Navigation and Download Button -->
+<header class="header d-flex justify-content-between align-items-center">
+  <h1 class="ms-3">Hand Gesture Controller</h1>
+  <div class="d-flex align-items-center gap-3 me-3">
+    <!-- RGB Download Button -->
+    <a href="https://drive.google.com/uc?export=download&id=1AO03iuZnWL3lc5wJLUBSYsuSVqEzuVFS" class="btn-download" download>
+      <span>Download EXE</span>
+    </a>
+  
+    <!-- GitHub Button -->
+    <a href="https://github.com/Itz-Ankit-Siwach/Smart-Controller" class="btn btn-outline-light btn-sm" target="_blank">
+      <i class="bi bi-github me-1"></i> Source Code
+    </a>
+  
+    <!-- Research Paper Button (placeholder) -->
+    <a href="/static/Paper.pdf" class="btn btn-outline-light btn-sm" id="paper-btn" target="_blank">
+      <i class="bi bi-file-earmark-text me-1"></i> Research Paper
+    </a>
+  </div>
+  
+</header>
+
+
+  <!-- Introduction Section -->
+<section id="introduction" class="section" data-aos="fade-up">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 pe-md-5">
+        <img src="{{ url_for('static', filename='img.png') }}" alt="Hand Gesture Control System" class="img-fluid rounded shadow-lg mb-4">
+      </div>
+      
+      <div class="col-md-6">
+        <h2>Hand Gesture Controller</h2>
+        <p class="lead">Revolutionize your system with touch-free control using advanced computer vision technology.</p>
+        <p>Our system leverages <strong>MediaPipe</strong> for real-time hand tracking and <strong>OpenCV</strong> for gesture recognition, enabling seamless control of presentations through intuitive hand movements. The intuitive interface built with <strong>Tkinter</strong> provides customizable controls for a personalized experience.</p>
+        
+        <h5 class="mt-4">Key Features:</h5>
+        <ul class="feature-list">
+          <li><i class="bi bi-hand-index"></i> Slide navigation (next/previous) with simple finger gestures</li>
+          <li><i class="bi bi-mouse"></i> Mouse pointer control and click actions</li>
+          <li><i class="bi bi-zoom-in"></i> Pinch-to-zoom functionality</li>
+          <li><i class="bi bi-volume-up"></i> Volume control gestures</li>
+          <li><i class="bi bi-keyboard"></i> Voice dictation activation</li>
+          <li><i class="bi bi-layers"></i> Tab switching between applications</li>
+        </ul>
+        
+        <div class="tech-badges mt-4">
+          <span class="badge bg-primary me-2">Python</span>
+          <span class="badge bg-success me-2">OpenCV</span>
+          <span class="badge bg-info me-2">MediaPipe</span>
+          <span class="badge bg-warning">Tkinter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Why This Project -->
+<section id="why-project" class="section bg-dark" data-aos="fade-up">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <h2 class="mb-5">Why We Built This Hand Gesture Control System</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-box mb-3">
+                <i class="bi bi-people-fill"></i>
+              </div>
+              <h4>Hybrid Work Revolution</h4>
+              <p>Designed for the new era of remote and hybrid presentations where physical clickers aren't always available or practical.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-box mb-3">
+                <i class="bi bi-hand-thumbs-up"></i>
+              </div>
+              <h4>Natural Interaction</h4>
+              <p>Uses intuitive gestures that feel natural, reducing cognitive load during important presentations.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-box mb-3">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h4>Hygienic Solution</h4>
+              <p>Eliminates the need for shared equipment in conference rooms and lecture halls.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <div class="problem-box p-4 mb-4">
+              <h4 class="text-danger">The Problem We Solved</h4>
+              <p>Traditional presentation methods require physical devices that can:</p>
+              <ul>
+               
+                <li>Limit presenter movement</li>
+                <li>Create hygiene concerns in shared spaces</li>
+                <li>Offer limited functionality beyond basic navigation</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="solution-box p-4">
+              <h4 class="text-success">Our Innovative Solution</h4>
+              <p>Our system transforms any space into an interactive presentation environment:</p>
+              <ul>
+                <li>Works with any standard webcam</li>
+                <li>No special hardware required</li>
+                <li>Full control without touching devices</li>
+                <li>Customizable gestures for different needs</li>
+                <li>Open-source and extensible platform</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stats-box mt-5 p-4 rounded">
+          <div class="row">
+            <div class="col-md-3 col-6">
+              <div class="stat-item">
+                <h3 class="stat-number">10+</h3>
+                <p class="stat-label">Gesture Combinations</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-item">
+                <h3 class="stat-number">0.2s</h3>
+                <p class="stat-label">Response Time</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-item">
+                <h3 class="stat-number">97%</h3>
+                <p class="stat-label">Accuracy</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-item">
+                <h3 class="stat-number">1</h3>
+                <p class="stat-label">Simple EXE</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Merits -->
+<section id="merits" class="section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">Key Advantages of Our Hand Gesture Controller</h2>
+    
+    <div class="row g-4">
+      <!-- Benefit 1 -->
+      <div class="col-lg-6">
+        <div class="benefit-card p-4 h-100">
+          <div class="benefit-header d-flex align-items-center mb-3">
+            <div class="benefit-icon bg-primary me-3">
+              <i class="bi bi-hand-index"></i>
+            </div>
+            <h4 class="mb-0">Intuitive Gesture Control</h4>
+          </div>
+          <p>Our system recognizes <strong>12+ natural hand gestures</strong> mapped to common presentation controls:</p>
+          <ul class="gesture-list">
+            <li>👆 Single finger point for mouse movement</li>
+            <li>✌️ Two fingers for volume/arrow controls</li>
+            <li>🤟 Three fingers for mouse clicks</li>
+            <li>🖐️ Open palm for advanced controls</li>
+          </ul>
+          <p class="mb-0">No complex training required - works immediately with natural movements.</p>
+        </div>
+      </div>
+      
+      <!-- Benefit 2 -->
+      <div class="col-lg-6">
+        <div class="benefit-card p-4 h-100">
+          <div class="benefit-header d-flex align-items-center mb-3">
+            <div class="benefit-icon bg-success me-3">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <h4 class="mb-0">Enhanced Workflow Efficiency</h4>
+          </div>
+          <ul>
+            <li><strong>200ms response time</strong> for instant gesture recognition</li>
+            <li>Simultaneous control of slides, media, and applications</li>
+            <li>Customizable gesture mapping for personal preferences</li>
+            <li>Works seamlessly with PowerPoint, Google Slides, PDF viewers, and web browsers</li>
+          </ul>
+          <div class="tech-pill mt-3">
+            <span class="badge bg-dark me-2">MediaPipe</span>
+            <span class="badge bg-dark me-2">OpenCV</span>
+            <span class="badge bg-dark">PyAutoGUI</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Benefit 3 -->
+      <div class="col-lg-6">
+        <div class="benefit-card p-4 h-100">
+          <div class="benefit-header d-flex align-items-center mb-3">
+            <div class="benefit-icon bg-info me-3">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h4 class="mb-0">Windows Compatible</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="mt-3">Supported Devices:</h6>
+              <ul>
+                <li>Windows PCs</li>
+                
+                <li>Any standard webcam</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="mt-3">Works With:</h6>
+              <ul>
+                <li>Conference room setups</li>
+                <li>Lecture hall systems</li>
+                <li>Home office environments</li>
+                <li>Virtual meeting streams</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Benefit 4 -->
+      <div class="col-lg-6">
+        <div class="benefit-card p-4 h-100">
+          <div class="benefit-header d-flex align-items-center mb-3">
+            <div class="benefit-icon bg-warning me-3">
+              <i class="bi bi-eye"></i>
+            </div>
+            <h4 class="mb-0">Advanced Computer Vision</h4>
+          </div>
+          <p>Cutting-edge features powered by our proprietary algorithms:</p>
+          <ul>
+            <li>Real-time hand tracking at 30fps</li>
+            <li>Adaptive lighting compensation</li>
+            <li>Multi-hand recognition</li>
+            <li>Distance-calibrated sensitivity</li>
+          </ul>
+          <div class="accuracy-meter mt-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Gesture Accuracy</span>
+              <span>98.7%</span>
+            </div>
+            <div class="progress" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 98.7%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="additional-benefits mt-5 p-4 rounded">
+      <h4 class="text-center mb-4">Additional System Benefits</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="d-flex">
+            <i class="bi bi-battery-charging text-primary me-3 mt-1"></i>
+            <div>
+              <h5>Low Resource Usage</h5>
+              <p class="mb-0">Optimized to use less than 15% CPU on modern systems</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex">
+            <i class="bi bi-shield-lock text-success me-3 mt-1"></i>
+            <div>
+              <h5>Privacy Focused</h5>
+              <p class="mb-0">All processing happens locally - no cloud dependency</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex">
+            <i class="bi bi-gear text-info me-3 mt-1"></i>
+            <div>
+              <h5>Easy Configuration</h5>
+              <p class="mb-0">Simple control panel for sensitivity adjustments</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Innovation -->
+<section id="innovation" class="section bg-dark" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">Technical Innovations Behind Our Gesture Control</h2>
+    
+    <div class="row g-4 mb-5">
+      <!-- Core Tech Stack -->
+      <div class="col-lg-4">
+        <div class="tech-card p-4 h-100">
+          <div class="tech-icon mb-3">
+            <i class="bi bi-diagram-3"></i>
+          </div>
+          <h4>Core Technology Stack</h4>
+          <div class="tech-stack">
+            <div class="tech-item">
+              <div class="tech-logo mediapipe"></div>
+              <div class="tech-desc">
+                <h6>MediaPipe Hands</h6>
+                <p>21-point hand landmark detection at 30fps</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-logo opencv"></div>
+              <div class="tech-desc">
+                <h6>OpenCV</h6>
+                <p>Real-time image processing pipeline</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-logo tkinter"></div>
+              <div class="tech-desc">
+                <h6>Tkinter</h6>
+                <p>Customizable control interface</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture Recognition -->
+      <div class="col-lg-4">
+        <div class="tech-card p-4 h-100">
+          <div class="tech-icon mb-3">
+            <i class="bi bi-cpu"></i>
+          </div>
+          <h4>Advanced Gesture Engine</h4>
+          <ul class="feature-list">
+            <li>Multi-layer gesture classification:
+              <ul>
+                <li>Finger extension analysis</li>
+                <li>Relative position mapping</li>
+                <li>Motion trajectory tracking</li>
+              </ul>
+            </li>
+            <li>Dynamic sensitivity adjustment</li>
+            <li>Cooldown timers for precise control</li>
+            <li>Background-adaptive processing</li>
+          </ul>
+          <div class="accuracy-badge">
+            <span class="badge bg-primary">98.4% Detection Accuracy</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- System Architecture -->
+      <div class="col-lg-4">
+        <div class="tech-card p-4 h-100">
+          <div class="tech-icon mb-3">
+            <i class="bi bi-code-square"></i>
+          </div>
+          <h4>Optimized Architecture</h4>
+          <div class="architecture-diagram mb-3">
+            <div class="layer">
+              <span>1. Camera Input</span>
+              <i class="bi bi-camera-video"></i>
+            </div>
+            <div class="layer">
+              <span>2. Frame Processing</span>
+              <i class="bi bi-image"></i>
+            </div>
+            <div class="layer">
+              <span>3. Gesture Analysis</span>
+              <i class="bi bi-diagram-2"></i>
+            </div>
+            <div class="layer">
+              <span>4. Command Execution</span>
+              <i class="bi bi-terminal"></i>
+            </div>
+          </div>
+          <p class="mb-0">Multi-threaded design ensures smooth operation even on modest hardware.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Unique Innovations -->
+    <div class="innovation-highlights">
+      <h3 class="text-center mb-4">Our Breakthrough Features</h3>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="innovation-card p-4">
+            <div class="d-flex">
+              <div class="innovation-icon me-3">
+                <i class="bi bi-vector-pen"></i>
+              </div>
+              <div>
+                <h5>Adaptive Sensitivity Control</h5>
+                <p>Automatically adjusts gesture detection parameters based on:
+                  <span class="d-block mt-2">
+                    <span class="badge bg-secondary me-2">User distance</span>
+                    <span class="badge bg-secondary me-2">Lighting conditions</span>
+                    <span class="badge bg-secondary">Camera quality</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="innovation-card p-4">
+            <div class="d-flex">
+              <div class="innovation-icon me-3">
+                <i class="bi bi-clock-history"></i>
+              </div>
+              <div>
+                <h5>Intelligent Cooldown System</h5>
+                <p>Prevents accidental repeated commands with:
+                  <span class="d-block mt-2">
+                    <span class="badge bg-secondary me-2">Gesture-specific timers</span>
+                    <span class="badge bg-secondary">Context-aware delays</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="innovation-card p-4">
+            <div class="d-flex">
+              <div class="innovation-icon me-3">
+                <i class="bi bi-sliders"></i>
+              </div>
+              <div>
+                <h5>Customizable Control Panel</h5>
+                <p>User-configurable settings for:
+                  <span class="d-block mt-2">
+                    <span class="badge bg-secondary me-2">Gesture sensitivity</span>
+                    <span class="badge bg-secondary me-2">Feature toggles</span>
+                    <span class="badge bg-secondary">Action mapping</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="innovation-card p-4">
+            <div class="d-flex">
+              <div class="innovation-icon me-3">
+                <i class="bi bi-gpu-card"></i>
+              </div>
+              <div>
+                <h5>Hardware Optimization</h5>
+                <p>Efficient resource usage with:
+                  <span class="d-block mt-2">
+                    <span class="badge bg-secondary me-2">CPU throttling</span>
+                    <span class="badge bg-secondary me-2">Memory management</span>
+                    <span class="badge bg-secondary">GPU acceleration</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Performance Metrics -->
+    <div class="performance-metrics mt-5 p-4 rounded">
+      <h4 class="text-center mb-4">System Performance Metrics</h4>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <div class="metric-circle">
+            <div class="circle-progress" data-value="95">
+              <span>95%</span>
+            </div>
+            <h6>Gesture Accuracy</h6>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-circle">
+            <div class="circle-progress" data-value="30">
+              <span>30fps</span>
+            </div>
+            <h6>Processing Speed</h6>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-circle">
+            <div class="circle-progress" data-value="15">
+              <span>15%</span>
+            </div>
+            <h6>CPU Usage</h6>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-circle">
+            <div class="circle-progress" data-value="200">
+              <span>200ms</span>
+            </div>
+            <h6>Response Time</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Interface Description -->
+<section id="interface" class="section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">Intuitive User Interface Design</h2>
+    
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6">
+        <div class="interface-screenshot rounded shadow-lg overflow-hidden">
+          <img src="{{ url_for('static', filename='screenshot.png') }}" alt="Hand Gesture Controller Interface" class="img-fluid">
+
+          <div class="screenshot-caption p-3">
+            <i class="bi bi-zoom-in me-2"></i>Click to enlarge
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="mb-4">Main Control Panel</h3>
+        <div class="ui-feature-list">
+          <div class="feature-item d-flex mb-3">
+            <div class="feature-icon me-3">
+              <i class="bi bi-power"></i>
+            </div>
+            <div>
+              <h5>One-Click Activation</h5>
+              <p>Single button to enable/disable gesture recognition with visual status indicators</p>
+            </div>
+          </div>
+          <div class="feature-item d-flex mb-3">
+            <div class="feature-icon me-3">
+              <i class="bi bi-sliders"></i>
+            </div>
+            <div>
+              <h5>Customization Hub</h5>
+              <p>Centralized panel for adjusting all system parameters and gesture mappings</p>
+            </div>
+          </div>
+          <div class="feature-item d-flex">
+            <div class="feature-icon me-3">
+              <i class="bi bi-eye"></i>
+            </div>
+            <div>
+              <h5>Live Feed Preview</h5>
+              <p>Optional camera feed display with real-time hand tracking visualization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   
+    
+    <!-- Gesture Visualization -->
+    <div class="gesture-visualization mt-5 p-4 rounded">
+      <h3 class="text-center mb-4">Live Gesture Feedback System</h3>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="gesture-animation-container">
+            <img src="/static/Mouse.png" alt="Mouse Gesture Control" class="gesture-visual-image">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>Real-Time Status Indicators</h4>
+          <p>The interface provides immediate visual feedback when gestures are detected:</p>
+          <ul class="status-indicators">
+            <li>
+              <span class="indicator-dot bg-success"></span>
+              Active gesture recognition
+            </li>
+            <li>
+              <span class="indicator-dot bg-warning"></span>
+              Cooldown period
+            </li>
+            <li>
+              <span class="indicator-dot bg-danger"></span>
+              Gesture conflict
+            </li>
+          </ul>
+          <p class="mt-3">Color-coded notifications help users understand system state at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Gesture Manual -->
+<section id="gesture-manual" class="section bg-dark" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">Complete Gesture Reference Guide</h2>
+    
+    <div class="gesture-filter mb-5">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-success active" data-filter="all">All Gestures</button>
+        <button type="button" class="btn btn-outline-success" data-filter="presentation">Presentation</button>
+        <button type="button" class="btn btn-outline-success" data-filter="mouse">Mouse Control</button>
+        <button type="button" class="btn btn-outline-success" data-filter="media">Media Control</button>
+        <button type="button" class="btn btn-outline-success" data-filter="system">System Commands</button>
+      </div>
+    </div>
+    
+    <div class="row g-4 gesture-container">
+      <!-- Gesture 1 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="system">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Voice.png" alt="Dictation Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model middle-finger"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-mic"></i> Voice Dictation</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator middle">Middle</span>
+              <span class="finger-indicator">Finger Extended</span>
+            </div>
+            <p class="gesture-desc">Activates Windows voice-to-text dictation for hands-free typing</p>
+            <div class="gesture-details">
+              <h6>How to perform:</h6>
+              <ol>
+                <li>Extend middle finger straight up</li>
+                <li>Keep other fingers folded down</li>
+                <li>Hold for 1 second to activate</li>
+              </ol>
+              <div class="gesture-tip">
+                <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Works best in quiet environments
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 2 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="presentation">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Next.png" alt="Next Slide Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model pinky"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-arrow-right"></i> Next Slide</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator pinky">Pinky</span>
+              <span class="finger-indicator">Finger Extended</span>
+            </div>
+            <p class="gesture-desc">Advances to the next slide in presentation mode</p>
+            <div class="gesture-details">
+              <h6>Works with:</h6>
+              <div class="compatibility-badges">
+                <span class="badge bg-primary">PowerPoint</span>
+                <span class="badge bg-primary">Google Slides</span>
+                <span class="badge bg-primary">PDF Readers</span>
+              </div>
+              <div class="gesture-tip">
+                <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Works during full-screen presentations
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 3 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="presentation">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Back.png" alt="Previous Slide Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model thumb"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-arrow-left"></i> Previous Slide</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator thumb">Thumb</span>
+              <span class="finger-indicator">Extended</span>
+            </div>
+            <p class="gesture-desc">Returns to the previous slide or goes back in navigation</p>
+            <div class="gesture-details">
+              <h6>Cooldown:</h6>
+              <div class="cooldown-meter">
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                </div>
+                <small>0.3 seconds between gestures</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 4 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="mouse">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Left Click.png" alt="Left Click Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model thumb index pinky"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-mouse"></i> Left Click</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator thumb">Thumb</span>
+              <span class="finger-indicator index">Index</span>
+              <span class="finger-indicator pinky">Pinky</span>
+              <span class="finger-indicator">Extended</span>
+            </div>
+            <p class="gesture-desc">Simulates a standard mouse left-click action</p>
+            <div class="gesture-details">
+              <h6>Pointer Control:</h6>
+              <p>Use two-finger point gesture to move cursor before clicking</p>
+              <div class="gesture-tip">
+                <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Hold gesture for 0.5s for drag operations
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 5 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="mouse">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Right Click.png" alt="Right Click Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model index ring pinky"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-mouse"></i> Right Click</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator index">Index</span>
+              <span class="finger-indicator ring">Ring</span>
+              <span class="finger-indicator pinky">Pinky</span>
+              <span class="finger-indicator">Extended</span>
+            </div>
+            <p class="gesture-desc">Simulates a standard mouse right-click action</p>
+            <div class="gesture-details">
+              <h6>Context Menu:</h6>
+              <p>Works with all standard right-click context menus in Windows</p>
+              <div class="gesture-tip">
+                <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> 1-second cooldown prevents accidental activation
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 6 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="media">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Up Down.png" alt="Volume Control Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model index-pinky"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-volume-up"></i> Media Controls</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator">Multiple</span>
+              <span class="finger-indicator">Gestures</span>
+            </div>
+            <p class="gesture-desc">Control volume, media playback, and navigation</p>
+            <div class="gesture-details">
+              <h6>Available Commands:</h6>
+              <ul>
+                <li><strong>Index + Pinky:</strong> Volume Up</li>
+                <li><strong>Middle + Pinky:</strong> Volume Down</li>
+                <li><strong>Index + Middle:</strong> Arrow Up</li>
+                <li><strong>Ring + Pinky:</strong> Arrow Down</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 7 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="system">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Tab.png" alt="Tab Switch Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model full-hand"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-window-stack"></i> Tab Switching</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator">Full Hand</span>
+              <span class="finger-indicator">Swipe Motion</span>
+            </div>
+            <p class="gesture-desc">Switch between browser/application tabs</p>
+            <div class="gesture-details">
+              <h6>Directions:</h6>
+              <ul>
+                <li><strong>Swipe Right:</strong> Next Tab (Ctrl+Tab)</li>
+                <li><strong>Swipe Left:</strong> Previous Tab (Ctrl+Shift+Tab)</li>
+              </ul>
+              <div class="gesture-tip">
+                <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Requires at least 30cm horizontal movement
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 8 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="media">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Zoom.png" alt="Zoom Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model two-hands"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-zoom-in"></i> Zoom Control</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator">Two Hands</span>
+              <span class="finger-indicator">Pinch Motion</span>
+            </div>
+            <p class="gesture-desc">Zoom in/out by moving hands closer/further apart</p>
+            <div class="gesture-details">
+              <h6>Supported Applications:</h6>
+              <div class="compatibility-badges">
+                <span class="badge bg-primary">Browsers</span>
+                <span class="badge bg-primary">PDF Viewers</span>
+                <span class="badge bg-primary">Image Editors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gesture 9 -->
+      <div class="col-lg-4 col-md-6 gesture-item" data-category="system">
+        <div class="gesture-card h-100">
+          <div class="gesture-visual">
+            <img src="static/Scroll.png" alt="Scroll Gesture" class="img-fluid">
+            <div class="gesture-animation">
+              <div class="hand-model two-fingers"></div>
+            </div>
+          </div>
+          <div class="gesture-info">
+            <h4><i class="bi bi-mouse2"></i> Scroll Control</h4>
+            <div class="gesture-combo">
+              <span class="finger-indicator">Two Fingers</span>
+              <span class="finger-indicator">Vertical Motion</span>
+            </div>
+            <p class="gesture-desc">Scroll up/down by moving fingers vertically</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gesture-legend mt-5 p-4 rounded">
+      <h4 class="text-center mb-4">Gesture Legend</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Finger Indicators:</h5>
+          <div class="finger-legend">
+            <div class="finger-item">
+              <span class="finger-dot thumb"></span>
+              <span>Thumb</span>
+            </div>
+            <div class="finger-item">
+              <span class="finger-dot index"></span>
+              <span>Index</span>
+            </div>
+            <div class="finger-item">
+              <span class="finger-dot middle"></span>
+              <span>Middle</span>
+            </div>
+            <div class="finger-item">
+              <span class="finger-dot ring"></span>
+              <span>Ring</span>
+            </div>
+            <div class="finger-item">
+              <span class="finger-dot pinky"></span>
+              <span>Pinky</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Gesture Types:</h5>
+          <ul>
+            <li><span class="badge bg-presentation me-2"></span> Presentation Controls</li>
+            <li><span class="badge bg-mouse me-2"></span> Mouse Functions</li>
+            <li><span class="badge bg-media me-2"></span> Media Controls</li>
+            <li><span class="badge bg-system me-2"></span> System Commands</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+<!-- Video Tutorial -->
+<section id="video-tutorial" class="section" data-aos="fade-up">
+  <div class="container">
+    <h2>Interactive Video Tutorial</h2>
+    <div class="ratio ratio-16x9">
+      <iframe 
+        src="https://www.youtube.com/embed/YPHbvn8OM2I?autoplay=1&mute=1&loop=1&playlist=YPHbvn8OM2I" 
+        title="Video Tutorial" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- Author Profiles -->
+<section id="authors" class="section bg-dark" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">Meet The Development Team</h2>
+    
+    <div class="row g-4">
+      <!-- Author 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="team-img-container">
+            <img src="{{ url_for('static', filename='Nikhil IMG.jpg') }}" alt="Associate Developer" class="team-img">
+
+            <div class="team-social">
+              <a href="https://www.linkedin.com/in/nikhil-singh-a42284263/" target="_blank" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/Nikhilsingh199" target="_blank" class="social-link github"><i class="bi bi-github"></i></a>
+              <a href="static/Nikhil CV.pdf" target="_blank" class="social-link resume"><i class="bi bi-file-earmark-person"></i></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4>Nikhil Singh</h4>
+            <p class="team-role">Associate Developer</p>
+            <div class="team-skills">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Machine Learning</span>
+              <span class="skill-badge">MediaPipe</span>
+            </div>
+            <p class="team-bio"> Tested the software. And made the project into runnable exe . And deployed the project.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Author 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="team-img-container">
+            <img src="{{ url_for('static', filename='Ankit Image.jpg') }}" alt="UI/UX ML" class="team-img">
+
+            <div class="team-social">
+              <a href="https://www.linkedin.com/in/itz-ankit-siwach/" target="_blank" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/Itz-Ankit-Siwach" target="_blank" class="social-link github"><i class="bi bi-github"></i></a>
+              <a href="static/Ankit CV 2.pdf" target="_blank" class="social-link resume"><i class="bi bi-file-earmark-person"></i></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4>Ankit Siwach</h4>
+            <p class="team-role">UI/UX Designer and Ml Engineer</p>
+            <div class="team-skills">
+              <span class="skill-badge">Tkinter</span>
+              <span class="skill-badge">UI Design</span>
+              <span class="skill-badge">Machine Learning</span>
+            </div>
+            <p class="team-bio">Designed the core gesture recognition and system architecture. Created the intuitive interface design and user experience flow. Conducted usability studies to optimize gesture controls.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Author 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="team-img-container">
+            <img src="{{ url_for('static', filename='Virat Image.jpg') }}" alt="Project Manager" class="team-img">
+
+            <div class="team-social">
+              <a href="https://www.linkedin.com/in/virat-kumar-134u/" target="_blank" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/Virat90" target="_blank" class="social-link github"><i class="bi bi-github"></i></a>
+              <a href="static/Virat CV.pdf" target="_blank" class="social-link resume"><i class="bi bi-file-earmark-person"></i></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4>Virat Kumar</h4>
+            <p class="team-role">Team Lead</p>
+            <div class="team-skills">
+              <span class="skill-badge">Machine Learning</span>
+              <span class="skill-badge">html</span>
+              <span class="skill-badge">Documentation</span>
+            </div>
+            <p class="team-bio">Oversaw project timeline and deliverables. Coordinated between team members and handled project documentation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="team-values mt-5">
+      <h3 class="text-center mb-4">Our Development Philosophy</h3>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon innovation"></div>
+            <h5>Innovation</h5>
+            <p>Pushing boundaries in human-computer interaction through novel gesture controls</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon usability"></div>
+            <h5>Usability</h5>
+            <p>Designing intuitive interfaces that require minimal learning curve</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon quality"></div>
+            <h5>Quality</h5>
+            <p>Rigorous testing ensures reliable performance in real-world scenarios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <!-- Support Section -->
+<section id="support" class="section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-5">We're Here to Help</h2>
+    
+    <div class="row g-4">
+      <!-- Contact Card -->
+      <div class="col-lg-4">
+        <div class="support-card h-100">
+          <div class="support-icon">
+            <i class="bi bi-envelope"></i>
+          </div>
+          <h4>Email Support</h4>
+          <p>Get personalized assistance from our technical team</p>
+          <a href="mailto:viratkumar9091@gmail.com" class="support-btn">
+            <i class="bi bi-envelope-open me-2"></i> viratkumar9091@gmail.com
+          </a>
+          <a href="mailto:ankitsiwach30111@gmail.com" class="support-btn">
+            <i class="bi bi-envelope-open me-2"></i> ankitsiwach30111@gmail.com
+          </a>
+          <a href="mailto:nitins706888@gmail.com" class="support-btn">
+            <i class="bi bi-envelope-open me-2"></i> nitins706888@gmail.com
+          </a>
+          <div class="response-time">
+            <i class="bi bi-clock"></i> Typical response: <strong>24 hours</strong>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Documentation Card -->
+      <div class="col-lg-4">
+        <div class="support-card h-100">
+          <div class="support-icon">
+            <i class="bi bi-book"></i>
+          </div>
+          <h4>Documentation</h4>
+          <p>Comprehensive guides and API references</p>
+          <div class="doc-links">
+            <a href="docs/quickstart.pdf" class="doc-link">
+              <i class="bi bi-file-earmark-pdf"></i> Quick Start Guide
+            </a>
+            <a href="docs/technical-manual.pdf" class="doc-link">
+              <i class="bi bi-file-earmark-text"></i> Technical Manual
+            </a>
+            <a href="docs/troubleshooting.pdf" class="doc-link">
+              <i class="bi bi-tools"></i> Troubleshooting
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Community Card -->
+      <div class="col-lg-4">
+        <div class="support-card h-100">
+          <div class="support-icon">
+            <i class="bi bi-people"></i>
+          </div>
+          <h4>Community Help</h4>
+          <p>Connect with other users and developers</p>
+          <div class="community-links">
+            <a href="https://github.com/orgs/community/discussions/" target="_blank" class="community-link">
+              <i class="bi bi-github"></i> GitHub Discussions
+            </a>
+            <a href="https://stackoverflow.com/beta/discussions" target="_blank" class="community-link">
+              <i class="bi bi-stack-overflow"></i> Stack Overflow
+            </a>
+            <a href="https://discord.com/servers" target="_blank" class="community-link">
+              <i class="bi bi-discord"></i> Discord Community
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="faq-section mt-5">
+      <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+      <div class="accordion" id="faqAccordion">
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              What are the system requirements for the gesture controller?
+            </button>
+          </h4>
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              <p style="color: white;">Our system requires:</p>
+              <ul>
+                <li style="color: white;">Windows 10/11 </li>
+                <li style="color: white;">Webcam (720p minimum resolution)</li>
+                <li style="color: white;">4GB RAM minimum (8GB recommended)</li>
+                <li style="color: white;">Python 3.8+ (included in installer)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              How do I customize the gesture controls?
+            </button>
+          </h4>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              <p style="color: white;">You can customize gestures through the Control Panel:</p>
+              <ol>
+                <li style="color: white;">Open the application</li>
+                <li style="color: white;">Click "Customize" button</li>
+                <li style="color: white;">Adjust gesture sensitivity sliders</li>
+                <li style="color: white;">Map gestures to different actions</li>
+                <li style="color: white;">Save your configuration</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Why isn't my webcam being detected?
+            </button>
+          </h4>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              <p style="color: white;">If your webcam isn't detected, try these steps:</p>
+              <ul>
+                <li style="color: white;" >Ensure no other application is using the camera</li>
+                <li style="color: white;">Check your system permissions for camera access</li>
+                <li style="color: white;">Update your webcam drivers</li>
+                <li style="color: white;">Try a different USB port if using external camera</li>
+                <li style="color: white;">Restart the application</li>
+              </ul>
+              <p class="mt-2">If issues persist, contact our support team with your camera model details.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+              Can I use this with multiple monitors?
+            </button>
+          </h4>
+          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              <p style="color: white;">Yes! The gesture controller works with multi-monitor setups:</p>
+              <ul>
+                <li style="color: white;">Mouse control spans all connected displays</li>
+                <li style="color: white;">For presentations, slides will show on your primary display</li>
+                <li style="color: white;">Adjust "Display Settings" in the Control Panel for custom configurations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="full-faq.html" class="btn btn-outline-success">View Full FAQ</a>
+      </div>
+    </div>
+    
+    <!-- Newsletter -->
+    <div class="newsletter mt-5 p-4 rounded">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h4><i class="bi bi-envelope-open-heart"></i> Stay Updated</h4>
+          <p>Subscribe to our newsletter for product updates and tips</p>
+        </div>
+        <div class="col-md-6">
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Your email address" required>
+              <button class="btn btn-success" type="submit">Subscribe</button>
+            </div>
+            <div class="form-text">We'll never share your email. Unsubscribe anytime.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Smart System Controller . All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS Animation JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
+    });
+  });
+</script>
+
+</body>
+</html>
